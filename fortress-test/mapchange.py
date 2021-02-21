@@ -11,9 +11,9 @@ map_settings = "Default map"
 
 def set_round_console_message(length, conq, mapset):
     result = "ROUND_CONSOLE_MESSAGE "
-    result += "0x6699eeWall length: 0xff4444 " + length + "\n"
-    result += "0x6699eeConq settings: 0xff4444 " + conq + "\n"
-    result += "0x6699eeMap settings: 0xff4444 " + mapset + "\n"
+    result += "0x6699eeWall length: 0xff4444 " + length + ", "
+    result += "0x6699eeConq settings: 0xff4444 " + conq + ", "
+    result += "0x6699eeMap settings: 0xff4444 " + mapset
 
     print(result)
 
@@ -46,7 +46,7 @@ while True:
 
         if line.startswith("CHAT"):
             parsed_line = line.split()
-            if parsed_line[2]:
+            if parsed_line[2] != "":
                 if parsed_line[2].startswith("!"):
                     command = parsed_line[2][1:]
                     if command == "help":
