@@ -50,7 +50,6 @@ while True:
                 if parsed_line[2].startswith("!"):
                     command = parsed_line[2][1:]
                     if command == "help":
-                        print("CONSOLE_MESSAGE Entering !help")
                         print("CONSOLE_MESSAGE 0xaa44ffAvailable Configs: (type !config and one of the below)\n" +
                               "CONSOLE_MESSAGE 0x6699eedefault: 0xff4444Reset all settings to default\n" +
                               "CONSOLE_MESSAGE 0x6699eefort_tail_x: 0xff4444Adjust the tail length (replace x with 375, 350, or 325)\n" +
@@ -70,61 +69,74 @@ while True:
                     if command == "config":
                         config = parsed_line[3]
                         if config == "default":
-                            print("INCLUDE settings_custom.cfg")
                             wall_length = "400"
                             conq_settings = "Normal ladle conq settings"
                             map_settings = "Default map"
+                            print("CONSOLE_MESSAGE Resetting all settings.")
+                            print("INCLUDE settings_custom.cfg")
                         if config == "fort_tail_375":
+                            print("CONSOLE_MESSAGE Setting tail length to 375")
                             print("WALLS_LENGTH 375")
                             wall_length = "375"
                         if config == "fort_tail_350":
+                            print("CONSOLE_MESSAGE Setting tail length to 350")
                             print("WALLS_LENGTH 350")
                             wall_length = "350"
                         if config == "fort_tail_325":
+                            print("CONSOLE_MESSAGE Setting tail length to 325")
                             print("WALLS_LENGTH 325")
                             wall_length = "325"
                         if config == "zone_conq_1":
+                            print("CONSOLE_MESSAGE Setting conq settings")
                             print("INCLUDE zone_conq_1.cfg")
                             conq_settings = "No decay rate, 2v2 conq in 25 seconds, 1v1 conq in 50 seconds"
                         if config == "zone_conq_2":
+                            print("CONSOLE_MESSAGE Setting conq settings")
                             print("INCLUDE zone_conq_2.cfg")
                             conq_settings = ".01 decay rate, 2v2 conq in 20 seconds, 1v1 conq in 50 seconds"
                         if config == "zone_conq_3":
+                            print("CONSOLE_MESSAGE Setting conq settings")
                             print("INCLUDE zone_conq_3.cfg")
                             conq_settings = ".05 decay rate, 2v2 conq in 11.1 seconds, 1v1 conq in 50 seconds"
                         if config == "zone_conq_4":
+                            print("CONSOLE_MESSAGE Setting conq settings")
                             print("INCLUDE zone_conq_4.cfg")
                             conq_settings = ".02 decay rate, 2v2 conq in 25 seconds, 1v1 conq in 100 seconds"
                         if config == "zone_conq_5":
+                            print("CONSOLE_MESSAGE Setting conq settings")
                             print("INCLUDE zone_conq_5.cfg")
                             conq_settings = ".1 decay rate, 2v2 conq in 25 seconds, NO 1v1 conq"
-
-                        set_round_console_message(wall_length, conq_settings, map_settings)
 
                     if command == "map":
                         map_file = parsed_line[3]
                         if map_file == "default":
-                            print("INCLUDE settings_custom.cfg")
                             wall_length = "400"
                             conq_settings = "Normal ladle conq settings"
                             map_settings = "Default map"
+                            print("CONSOLE_MESSAGE Resetting all settings.")
+                            print("INCLUDE settings_custom.cfg")
                         if map_file == "zone_45":
+                            print("Setting zone radius to 45")
                             print("MAP_FILE Desolate/fortress/fortress-zone-45-0.1.0.aamap.xml")
                             map_settings = "45 radius zone"
                         if map_file == "zone_50":
+                            print("Setting zone radius to 50")
                             print("MAP_FILE Desolate/fortress/fortress-zone-50-0.1.0.aamap.xml")
                             map_settings = "50 radius zone"
                         if map_file == "zone_expand_1":
+                            print("Setting zone expand map file 1")
                             print("MAP_FILE Desolate/fortress/fortress-zone-expand-0.1.0.aamap.xml")
                             map_settings = "Expanding zone, ~4-5 minutes to full box def"
                         if map_file == "zone_expand_2":
+                            print("Setting zone expand map file 2")
                             print("MAP_FILE Desolate/fortress/fortress-zone-expand-.03-0.1.0.aamap.xml")
                             map_settings = "Expanding zone, ~3-4 minutes to full box def"
                         if map_file == "zone_expand_3":
+                            print("Setting zone expand map file 3")
                             print("MAP_FILE Desolate/fortress/fortress-zone-expand-.015-0.1.0.aamap.xml")
                             map_settings = "Expanding zone, ~5 minutes to full box def"
 
-                        set_round_console_message(wall_length, conq_settings, map_settings)
+                    set_round_console_message(wall_length, conq_settings, map_settings)
 
     except:
         print("CONSOLE_MESSAGE Error: " + str(sys.exc_info()[0]) + ":" + str(sys.exc_info()[1]))
